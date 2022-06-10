@@ -1,4 +1,4 @@
-# My-Projects 
+# Covid -19 Project
 This is a complete project about COVID-19 data and prediction of cases or deaths from this pandemic using regression models
 such as polynomial regression, support vector regression or ARIMA and machine learning models (neural networks) such as 
 facebook's Prophet or LSTMs, GRUs, with addition of Attention mechanisms. 
