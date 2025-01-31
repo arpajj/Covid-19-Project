@@ -8,7 +8,6 @@ Original file is located at
 """
 
 # Commented out IPython magic to ensure Python compatibility.
-import seaborn as sns
 import time, math
 import numpy as np 
 import pandas as pd
@@ -25,6 +24,7 @@ import sys
 from difflib import SequenceMatcher
 import time, math
 from random import randint
+import urllib.request
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
@@ -196,58 +196,56 @@ def plot_horizontal_bars(cntrs,a_list):
     plt.barh(cntrs[i],a_list[i][-1])
   plt.show()
 
-def MapPreparation(Overall_per_country):
-  url = 'https://raw.githubusercontent.com/python-visualization/folium/master/examples/data'
-  countries_geo = f'{url}/world-countries.json'
-  print(countries_geo)
-  with urllib.request.urlopen(countries_geo) as f:
-      html = f.read().decode('utf-8')
 
-  my_dictionary = json.loads(html)
+def MapPreparation(Overall_per_country): 
+    url = 'https://raw.githubusercontent.com/python-visualization/folium/master/examples/data'
+    countries_geo = f'{url}/world-countries.json'
+    
+    print(countries_geo)
+    
+    with urllib.request.urlopen(countries_geo) as f:
+        html = f.read().decode('utf-8')
 
-  #for i in my_dictionary['features']:
-  #  print(type(i['properties']['name']))
-  #  break
-  #print(type(my_dictionary['features'][0]))
-  #my_dict = collections.OrderedDict(sorted(my_dictionary.items(),key=lambda t: t[0][3][0]))
-  #print(my_dict['features'][3])
-  denominations_json = []
-  for index in range(len(my_dictionary['features'])):
-      denominations_json.append(my_dictionary['features'][index]['properties']['name'])
-      
-  denominations_json = sorted(denominations_json)
-  #print((denominations_json))
+    my_dictionary = json.loads(html)
+    
+    # Extract country names from the GeoJSON file
+    denominations_json = sorted([feature['properties']['name'] for feature in my_dictionary['features']])
 
-  Overall_array = np.array(Overall_per_country)
-  Overall = pd.DataFrame(data=Overall_array[:,0:7])
-  #print(Overall[0])
-  #columns_titles = [0,1]
-  #Overall=Overall.reindex(columns=columns_titles)
-  dataframe_names = Overall[0].tolist()
-  Overall.replace(dict (zip(dataframe_names, denominations_json)), inplace=True)
+    # Convert Overall_per_country into a Pandas DataFrame directly
+    Overall = pd.DataFrame(Overall_per_country)  
 
-  def make_right(index,id):
-    for k in range(1,7):
-      Overall[k][index] = Overall_per_country[id][k]
+    # Ensure at least 7 columns exist (prevent index errors)
+    while Overall.shape[1] < 7:
+        Overall[len(Overall.columns)] = None
 
-  for i in range(len(Overall)):
-    for j in Overall_per_country:
-      x = similar(Overall[0][i],j[0])
-      if (x>=0.99):
-        Overall[1][i] = j[1]
-        Overall[2][i] = j[2]
-        Overall[3][i] = j[3]
-        Overall[4][i] = j[4]
-        Overall[5][i] = j[5]
-        Overall[6][i] = j[6]
-    if (Overall[0][i]=="Russia"):
-      make_right(i,175)
-    if (Overall[0][i]== "Iran"):
-      make_right(i,98)
-    if (Overall[0][i]=="Antarctica"):
-      make_right(i,3)
+    # Rename the first column to match the country names from GeoJSON
+    dataframe_names = Overall.iloc[:, 0].tolist()
+    
+    # Replace country names with the sorted GeoJSON country names
+    Overall.replace({Overall.columns[0]: dict(zip(dataframe_names, denominations_json))}, inplace=True)
 
-  return (Overall,countries_geo)
+    # Helper function to update values for specific countries
+    def make_right(index, id):
+        for k in range(1, 7):
+            Overall.iloc[index, k] = Overall_per_country[id][k]
+
+    # Iterate through the DataFrame and match country names
+    for i in range(len(Overall)):
+        for j in Overall_per_country:
+            if Overall.iloc[i, 0] == j[0]:  # Exact match instead of similarity
+                for k in range(1, 7):
+                    Overall.iloc[i, k] = j[k]
+
+        # Manually correct specific country names
+        if Overall.iloc[i, 0] == "Russia":
+            make_right(i, 175)
+        elif Overall.iloc[i, 0] == "Iran":
+            make_right(i, 98)
+        elif Overall.iloc[i, 0] == "Antarctica":
+            make_right(i, 3)
+
+    return Overall, countries_geo
+
 
 def MakeMap(i,color,mylist,Legends,Overall,countries_geo):
   bins = list (Overall[i].quantile(mylist))
