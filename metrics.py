@@ -8,7 +8,6 @@ Original file is located at
 """
 
 import numpy as np 
-import pandas as pd
 import matplotlib.pyplot as plt
 
 def accuracy_func(error,real,preds):
@@ -55,15 +54,13 @@ def MAPE(prd,obs,number):
   mape = (100/len(prd))*Sum
   print("The mean absolute percentage error (MAPE) is: ", np.round(mape.item(),2), "%")
 
-def plot_bars(pred,actuals,length):
+def plot_bars(pred,actuals,length, dates_reported):
   preds = list (pred[-length:])
   real = list (actuals[-length:])
-  #dates = list (Dates_reported2[429:429+length])
-  dates = list (Dates_reported[-length:])
+  dates = list (dates_reported[-length:])
   days = []
   for i in dates:
     days.append(i[0])
-    #days.append(i)
      
   barWidth = 0.25
   d1 = np.arange(len(days))
@@ -75,7 +72,7 @@ def plot_bars(pred,actuals,length):
   plt.xticks([r + barWidth for r in range(len(days))], days,rotation=90)
   plt.legend(fontsize=14)
   plt.show()
-  print("Final Accuracy of the LSTM is: ", np.round(100-np.mean(accuracy_func([],real,preds)),2),"%")
+  print("Final Accuracy of the model is: ", np.round(100-np.mean(accuracy_func([],real,preds)),2),"%")
 
 def R_square(obss,predd):
   mean_obs = np.mean(obss)
