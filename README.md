@@ -18,3 +18,8 @@ git clone https://github.com/arpajj/Covid-19-Project.git
 __STEP 2__: Upload and store everything (all files) in your Google Drive under the same directory.
 
 __STEP 3__: Start running the the notebook [firt_part.ipynb](./first_part.ipynb) for exploring & visualizing the Covid-19 data and testing the initial methods of prediction.
+
+
+### Part 2: Experimentation & Prediction with Neural Networks.
+
+
