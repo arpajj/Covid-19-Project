@@ -7,5 +7,6 @@ such as polynomial regression, support vector regression or ARIMA but also other
 Meta's Prophet. Machine/Deep learning models (neural networks) like LSTMs, GRUs, with Attention mechanisms are also deployed. 
 
 The project is divided into two sub-parts: 1) The pre-processing, visualization and classical ways prediction and 2) The prediction and experimentation with neural networks. 
+For more information you can read the Thesis short description [here](./Thesis_Description_English.pdf)
 
 ### Part 1: Pre-processing & Data Visualization & Classical Prediction.
