@@ -53,6 +53,7 @@ def MAPE(prd,obs,number):
       Sum += 0
   mape = (100/len(prd))*Sum
   print("The mean absolute percentage error (MAPE) is: ", np.round(mape.item(),2), "%")
+  return np.round(mape.item(),2)
 
 def plot_bars(pred,actuals,length, dates_reported):
   preds = list (pred[-length:])
@@ -73,6 +74,7 @@ def plot_bars(pred,actuals,length, dates_reported):
   plt.legend(fontsize=14)
   plt.show()
   print("Final Accuracy of the model is: ", np.round(100-np.mean(accuracy_func([],real,preds)),2),"%")
+  return np.round(100-np.mean(accuracy_func([],real,preds)),2)
 
 def R_square(obss,predd):
   mean_obs = np.mean(obss)
@@ -82,7 +84,8 @@ def R_square(obss,predd):
     e_s[i] = (obss[i]-predd[i])**2
   SS_res = np.sum(e_s)
   R_2 = 1 - (SS_res/SS_tot)
-  print("The R_squared value is: ",np.round(R_2,3))
+  print("The R_squared value is: ", np.round(R_2,3))
+  return np.round(R_2,3)
 
 def RMSPE(obss,predd):
   e = np.zeros(len(obss))
@@ -92,5 +95,6 @@ def RMSPE(obss,predd):
     else:
       e[i] = 0
   temp = np.sqrt(np.mean(e))
-  print("The root mean squared percentage error (RMSPE) is: " ,np.round(100*temp,2),'%')
+  print("The root mean squared percentage error (RMSPE) is: " , np.round(100*temp,2),'%')
+  return np.round(100*temp,2)
 
