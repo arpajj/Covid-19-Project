@@ -30,5 +30,9 @@ __STEP 1__: (If you haven't from Part 1) Store the folder [data-second-phase](./
 __STEP 2__: Start experimenting with the notebook [second_part.ipynb](./second_part.ipynb), for running experiments with different data and models. Examine the data (dimensions, windows, slidings etc) and models (different types, (hyper)-parameters, adding attention etc). Refer to the main notebook of the Thesis 
 ([final_version.ipynb](./final_version.ipynb) - executed back in 2021), for understanding and see more about the technicalities of each approach.
 
+## Results:
 
+Some indicative results from different experiments are presented below: 
+1) Simple prediction with a neural network on a cases curve:
+![My_image](./example_output.png)
 
