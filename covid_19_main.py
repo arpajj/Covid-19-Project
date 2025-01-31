@@ -66,17 +66,12 @@ population = pd.DataFrame(population)
 population = np.array(population)
 more_data = pd.read_csv('owid-covid-data-old.csv')
 more_data = pd.DataFrame(more_data)
-#last_data = pd.read_csv('laaaaaaaaast.csv')
-#last_data = pd.DataFrame(last_data)
-#usa_data = pd.read_csv('national-history.csv')
-#usa_data = pd.DataFrame(usa_data)
 sys.path.append('/content/gdrive/My Drive')
 
 more_data.head()
 
 Dates_reported,countries,New_cases,New_deaths,Cumulative_cases,Cumulative_deaths = sub.WHO_data(data)
 Dates,all_countries,icu_patients,hosp_patients,cumulative_tests,new_tests,life_exp,cum_vaccinations,vaccinated,new_vaccines,fully_vaccine = sub.Other_data(more_data)
-Dates_reported2,countries2,New_cases2,New_deaths2,Cumulative_cases2,Cumulative_deaths2 = sub.WHO_data(last_data)
 Population = sub.World_Population(population,countries)
 print(Population)
 
@@ -347,9 +342,9 @@ from pandas import read_csv
 from pandas import datetime
 from matplotlib import pyplot
 import statsmodels.api as sm
-#import statsmodels.tsa.arima #.model import ARIMA
 from sklearn.metrics import mean_squared_error
 from math import sqrt
+
 data_a = Daily_World_cases
 labels = np.array(data_a)
 size = int(len(labels) * 0.9)
