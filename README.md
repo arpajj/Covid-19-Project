@@ -25,7 +25,7 @@ __STEP 3__: Start running the the notebook [firt_part.ipynb](./first_part.ipynb)
 __STEP 1__: (If you haven't from Part 1) Store the folder [data-second-phase](./data-second-phase) and the notebook [second_part.ipynb](./second_part.ipynb) under the same directory in Google Drive.
 
 __STEP 2__: Start experimenting with the notebook [second_part.ipynb](./second_part.ipynb), for running experiments with different data and models. Examine the data (dimensions, windows, slidings etc) and models (different types, (hyper)-parameters, adding attention etc). Refer to the main notebook of the Thesis 
-([final_version.ipynb](./final_version.ipynb) executed back in 2021), for understanding and see more about the technicalities of each approach.
+([final_version.ipynb](./final_version.ipynb) - executed back in 2021), for understanding and see more about the technicalities of each approach.
 
 
 
