@@ -22,4 +22,7 @@ __STEP 3__: Start running the the notebook [firt_part.ipynb](./first_part.ipynb)
 
 ### Part 2: Experimentation & Prediction with Neural Networks.
 
+__STEP 1__: (If you haven't) Store the folder [data-second-phase](./data-second-phase)
+
+
 
