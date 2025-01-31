@@ -7,7 +7,10 @@ such as polynomial regression, support vector regression or ARIMA but also other
 Meta's Prophet. Machine/Deep learning models (neural networks) like LSTMs, GRUs, with Attention mechanisms are also deployed. 
 
 The project is divided into two sub-parts: 1) The pre-processing, visualization and classical ways of prediction the pandemic and 2) The prediction and experimentation with neural networks. 
-For more information you can read the Thesis short description [here](./Thesis_Description_English.pdf). Additionally, as the whole project was carried out in Googgle Colab, it is _highly recommended_ to run everything in Colab.
+For more information you can read the Thesis short description [here](./Thesis_Description_English.pdf). 
+
+## How to use:
+As the whole project was carried out in Googgle Colab, it is _highly recommended_ to run everything in Google Colab as well, by storing files and data in Google Drive respectively.
 
 ### Part 1: Pre-processing & Data Visualization & Classical Prediction.
 
