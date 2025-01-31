@@ -2,7 +2,7 @@
 ## About the project 
 This is a complete project about COVID-19 data visualization and prediction.
 For data visualization we use clasic tools like pie-charts, heat-tables, graphs but also geographic heatmaps. 
-In the case of prediction we focalise in cases and deaths caused from the pandemic and we use regression models
+For the prediction purposes, we focalise in cases and deaths caused from the pandemic and we use regression models
 such as polynomial regression, support vector regression or ARIMA but also other forecasting methods such as 
 Meta's Prophet. Machine/Deep learning models (neural networks) like LSTMs, GRUs, with Attention mechanisms are also deployed. 
 
