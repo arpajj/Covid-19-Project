@@ -33,6 +33,10 @@ __STEP 2__: Start experimenting with the notebook [second_part.ipynb](./second_p
 ## Results:
 
 Some indicative results from different experiments are presented below: 
-1) Simple prediction with a neural network on a cases curve:
+1) Simple prediction with a neural network on the test part of cases curve for Greece:
 ![My_image](./example_output.png)
+
+2) Extraction of geographical characteristics for the cases curve of Greece, using four different models:
+![My_image](./example_output_2.png)
+
 
