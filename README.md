@@ -6,7 +6,7 @@ For the prediction purposes, we focalise in cases and deaths caused from the pan
 such as polynomial regression, support vector regression or ARIMA but also other forecasting methods such as 
 Meta's Prophet. Machine/Deep learning models (neural networks) like LSTMs, GRUs, with Attention mechanisms are also deployed. 
 
-The project is divided into two sub-parts: 1) The pre-processing, visualization and classical ways prediction and 2) The prediction and experimentation with neural networks. 
+The project is divided into two sub-parts: 1) The pre-processing, visualization and classical ways of prediction the pandemic and 2) The prediction and experimentation with neural networks. 
 For more information you can read the Thesis short description [here](./Thesis_Description_English.pdf).
 
 ### Part 1: Pre-processing & Data Visualization & Classical Prediction.
