@@ -8,21 +8,15 @@ Original file is located at
 """
 
 # Commented out IPython magic to ensure Python compatibility.
-import time, math
 import numpy as np 
 import pandas as pd
 import matplotlib.pyplot as plt
 # %matplotlib inline
 from operator import itemgetter, attrgetter
-import collections
 import folium
-import io
 import json
-import os
 import urllib.request
-import sys
 from difflib import SequenceMatcher
-import time, math
 from random import randint
 import urllib.request
 
@@ -174,6 +168,7 @@ def plot_top5(days,tlist1,tlist2,index1,index2,string):
     plt.grid(True, linewidth=2.0)
     plt.show()
 
+
 def Heat_Table(a_list):
   temp_list = sorted(a_list,key=itemgetter(1),reverse=True)
   country_df = pd.DataFrame({'Country Name':[c[0] for c in temp_list], 'Number of Confirmed Cases': [int (c[1]) for c in temp_list],
@@ -197,22 +192,22 @@ def plot_horizontal_bars(cntrs,a_list):
   plt.show()
 
 
-def MapPreparation(Overall_per_country): 
+def MapPreparation(Overall_per_country):
     url = 'https://raw.githubusercontent.com/python-visualization/folium/master/examples/data'
     countries_geo = f'{url}/world-countries.json'
-    
+
     print(countries_geo)
-    
+
     with urllib.request.urlopen(countries_geo) as f:
         html = f.read().decode('utf-8')
 
     my_dictionary = json.loads(html)
-    
+
     # Extract country names from the GeoJSON file
     denominations_json = sorted([feature['properties']['name'] for feature in my_dictionary['features']])
 
     # Convert Overall_per_country into a Pandas DataFrame directly
-    Overall = pd.DataFrame(Overall_per_country)  
+    Overall = pd.DataFrame(Overall_per_country)
 
     # Ensure at least 7 columns exist (prevent index errors)
     while Overall.shape[1] < 7:
@@ -220,7 +215,7 @@ def MapPreparation(Overall_per_country):
 
     # Rename the first column to match the country names from GeoJSON
     dataframe_names = Overall.iloc[:, 0].tolist()
-    
+
     # Replace country names with the sorted GeoJSON country names
     Overall.replace({Overall.columns[0]: dict(zip(dataframe_names, denominations_json))}, inplace=True)
 
